@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Abstract.fs" />
+        <Compile Include="Types.fs" />
+        <Compile Include="Constructors.fs" />
+        <Compile Include="Excel.fs" />
+        <Compile Include="Literals.fs" />
+        <Compile Include="Model.fs" />
+        <Compile Include="Init.fs" />
+        <Compile Include="Messages.fs" />
+        <Compile Include="CommandUtils.fs" />
+        <Compile Include="Commands.fs" />
+        <Compile Include="UpdateUtils.fs" />
+        <Compile Include="Update.fs" />
+        <Compile Include="Bindings.fs" />
+        <Compile Include="Design.fs" />
+        <Compile Include="App.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Elmish.WPF" Version="3.5.8" />
+      <PackageReference Include="NPOI" Version="2.5.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ContentManager.Utils\ContentManager.Utils.fsproj" />
+    </ItemGroup>
+
+</Project>
