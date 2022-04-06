@@ -1,11 +1,12 @@
 ﻿module ContentManager.Core.Types
 
-open System.Data
 open Microsoft.FSharp.Core
 
-type ItemLeft =
+type Item =
     {
+        Id: int
         Name: string
-        Value: float
+        Value1: float
+        Value2: float
         Sum: float
     }

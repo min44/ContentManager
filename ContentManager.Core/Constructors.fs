@@ -2,16 +2,19 @@
 
 open System
 open ContentManager.Core
-open ContentManager.Core.Types
 open Types
 
 [<RequireQualifiedAccess>]
-module ItemElementConstructor =
-    let Create name value sum: ListItemLeft =
-        { Name = name
-          Value = value
+module ItemConstructor =
+    let Create name value1 value2 sum: Item =
+        { Id = Random().Next(1000, 9999)
+          Name = name
+          Value1 = value1
+          Value2 = value2
           Sum = sum }
-    let Default(): ListItemLeft =
-        { Name = ""
-          Value = 0.0
+    let Default() =
+        { Id = Random().Next(1000, 9999)
+          Name = "Default"
+          Value1 = 0.0
+          Value2 = 0.0
           Sum = 0.0 }

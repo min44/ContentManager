@@ -4,6 +4,8 @@ open System
 open ContentManager.Core
 open Model
 
-let init (): Model * 'b list =
+let init () =
     { State = String.Empty
-      Input = None }, []
+      Input = String.Empty
+      Items = []
+      Total = 0.0 }, []

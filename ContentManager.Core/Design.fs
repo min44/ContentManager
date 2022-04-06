@@ -1,7 +1,12 @@
 ﻿module ContentManager.Core.Design
 
 open Elmish.WPF
-open Init
 open Bindings
+open Model
 
-let designVm = ViewModel.designInstance (init () |> fst) (bindings ())
+let initVm =
+    { State = "Initial State"
+      Input = "Hello world"
+      Items = []
+      Total = 0.0 }
+let designVm = ViewModel.designInstance initVm (bindings ())

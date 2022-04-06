@@ -11,4 +11,4 @@ let Run window =
         init
         update
         bindings
-    |> Program.startElmishLoop ElmConfig.Default window 
+    |> Program.startElmishLoop ElmConfig.Default window

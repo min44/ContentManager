@@ -4,41 +4,81 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        xmlns:vm="clr-namespace:ContentManager.Core;assembly=ContentManager.Core"
+        d:DataContext="{x:Static vm:Design.designVm}"
+        xmlns:converters="clr-namespace:ContentManager.UI.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        Title="MainWindow" Height="800" Width="1200"
+        FontFamily="Consolas"
+        FontSize="16"
+        Title="MainWindow" Height="600" Width="800"
         WindowStartupLocation="CenterScreen">
-
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:StringToDoubleValueConverter x:Key="StringToDoubleValueConverter" />
+        </ResourceDictionary>
+    </Window.Resources>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="ContentRendered">
             <i:InvokeCommandAction Command="{Binding Rendered}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80" />
-            <RowDefinition Height="80" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <TextBox Text="{Binding State}" />
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <ListBox 
-                Grid.Column="0"
-                ItemsSource="{Binding CableTrayTypes}"
-                SelectedItem="{Binding CableTrayTypeId}"
-                Margin="-2"
-                BorderBrush="Transparent"
-                HorizontalContentAlignment="Stretch"
-                ScrollViewer.CanContentScroll="False"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                VirtualizingPanel.ScrollUnit="Pixel"
-                VirtualizingPanel.IsVirtualizing="True">
-                
-                
-            </ListBox>
+    <Border Margin="5">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{Binding State}" />
+            <TextBlock Grid.Row="1" Text="{Binding Input, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Grid.Row="2" Text="{Binding Total, StringFormat='Total: {0}'}" />
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ListBox
+                    Margin="5"
+                    Grid.Column="0"
+                    ItemsSource="{Binding Items}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="X: " />
+                                    <TextBox
+                                        Text="{Binding Value1, Converter={StaticResource StringToDoubleValueConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                    <TextBlock Text=" Y: " />
+                                    <TextBox
+                                        Text="{Binding Value2, Converter={StaticResource StringToDoubleValueConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Sum: " />
+                                    <TextBlock Text="{Binding Sum}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox
+                    Margin="5"
+                    Grid.Column="1"
+                    ItemsSource="{Binding Items}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="X: " />
+                                <TextBox
+                                    Text="{Binding Value1, Converter={StaticResource StringToDoubleValueConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBlock Text=" Y: " />
+                                <TextBox
+                                    Text="{Binding Value2, Converter={StaticResource StringToDoubleValueConverter}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>
