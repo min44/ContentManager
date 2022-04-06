@@ -1,12 +1,9 @@
 ﻿module ContentManager.Core.Init
 
+open System
 open ContentManager.Core
 open Model
 
-let init () =
-    { State = "Hello!"
-      Resent = []
-      DataPath = None
-      Context = None
-      Sheets = []
-    }, []
+let init (): Model * 'b list =
+    { State = String.Empty
+      Input = None }, []

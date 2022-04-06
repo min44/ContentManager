@@ -6,11 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Abstract.fs" />
         <Compile Include="Types.fs" />
         <Compile Include="Constructors.fs" />
-        <Compile Include="Excel.fs" />
-        <Compile Include="Literals.fs" />
         <Compile Include="Model.fs" />
         <Compile Include="Init.fs" />
         <Compile Include="Messages.fs" />
